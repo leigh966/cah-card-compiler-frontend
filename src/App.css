@@ -28,3 +28,7 @@
 .text-align-center {
   text-align: center;
 }
+
+body {
+  background-color: whitesmoke;
+}
