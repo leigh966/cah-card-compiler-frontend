@@ -1,0 +1,30 @@
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.fills-page {
+  width: 100vw;
+  height: 100vh;
+}
+
+.moved-up-by-height {
+  transform: translateY(-100%);
+}
+
+.fill-x {
+  width: 100%;
+}
+
+.text-align-center {
+  text-align: center;
+}
