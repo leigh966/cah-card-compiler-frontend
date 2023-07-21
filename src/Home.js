@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FRONTEND_URL } from "./WebConfig";
+import { FRONTEND_URL, BACKEND_URL } from "./WebConfig";
 
 function GroupCreationForm({ setGroupId }) {
   const onSubmit = (event) => {
