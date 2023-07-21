@@ -16,6 +16,39 @@ function CardCollection({ cards }) {
   return cardElems;
 }
 
+function DownloadReportButton({ sessionId }) {
+  const onClick = () => {
+    fetch(BACKEND_URL + "/report", {
+      method: "GET",
+      headers: {
+        session_id: sessionId,
+      },
+    }).then((response) => {
+      var a = response.body.getReader();
+      a.read().then(({ done, value }) => {
+        // console.log(new TextDecoder("utf-8").decode(value));
+        saveAsFile(new TextDecoder("utf-8").decode(value), "report.xls");
+      });
+    });
+  };
+
+  function saveAsFile(text, filename) {
+    // Step 1: Create the blob object with the text you received
+    const type = "application/vnd.ms-excel"; // modify or get it from response
+    const blob = new Blob([text], { type });
+
+    // Step 2: Create Blob Object URL for that blob
+    const url = URL.createObjectURL(blob);
+
+    // Step 3: Trigger downloading the object using that URL
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click(); // triggering it manually
+  }
+  return <button onClick={onClick}>Download Spreadsheet</button>;
+}
+
 export default function YourCards({ session_id }) {
   const [cards, setCards] = useState([]);
 
@@ -49,6 +82,7 @@ export default function YourCards({ session_id }) {
           <button id="add-card-btn" onClick={showAddCardForm}>
             Add
           </button>
+          <DownloadReportButton sessionId={session_id} />
         </div>
         <CardCollection cards={cards} />
       </div>
