@@ -5,10 +5,18 @@ export default function Login({ groupId, setSessionId }) {
   const [registering, setRegistering] = useState(false);
   const [toggleDisabled, setToggleDisabled] = useState(false);
 
+  console.log(setSessionId);
+
   const handleResponse = (r) => {
     setToggleDisabled(false);
     if (r.status === 201) {
       alert(registering ? "Registered" : "Logged In");
+      if (registering) {
+        alert("Registered!");
+        setRegistering(false);
+      } else {
+        r.text().then((text) => setSessionId(text));
+      }
     } else if (r.status === 409) {
       alert("Username taken");
     } else {

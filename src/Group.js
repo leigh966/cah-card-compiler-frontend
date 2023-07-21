@@ -6,14 +6,18 @@ import Login from "./Login";
 export default function Group() {
   const { id: groupId } = useParams();
 
-  const { sessionId, setSessionId } = useState(null);
+  const [sessionId, setSessionId] = useState(null);
+
+  console.log(sessionId);
+  console.log(setSessionId);
 
   if (!sessionId)
     return <Login setSessionId={setSessionId} groupId={groupId} />;
 
   return (
     <div>
-      <h3>ID: {groupId}</h3>
+      <h3>group_id: {groupId}</h3>
+      <h3>session_id: {sessionId}</h3>
     </div>
   );
 }
