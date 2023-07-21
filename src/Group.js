@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Login from "./Login";
+import YourCards from "./YourCards";
 
 export default function Group() {
   const { id: groupId } = useParams();
@@ -14,10 +15,5 @@ export default function Group() {
   if (!sessionId)
     return <Login setSessionId={setSessionId} groupId={groupId} />;
 
-  return (
-    <div>
-      <h3>group_id: {groupId}</h3>
-      <h3>session_id: {sessionId}</h3>
-    </div>
-  );
+  return <YourCards session_id={sessionId} />;
 }
