@@ -6,3 +6,23 @@
   margin: 5px;
   width: 90%;
 }
+
+#card-page-header {
+  width: 90%;
+}
+
+#add-card-btn {
+  align-self: center;
+  transform: translateX(-50%);
+}
+
+#your-cards-heading {
+  width: 50%;
+}
+
+#add-card-form {
+  position: absolute;
+  left: 50%;
+  top: 100px;
+  transform: translateX(-50%);
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BACKEND_URL } from "./WebConfig";
 import "./YourCards.css";
+import AddCard from "./AddCard";
 
 function Card({ info }) {
   return (
@@ -18,6 +19,8 @@ function CardCollection({ cards }) {
 export default function YourCards({ session_id }) {
   const [cards, setCards] = useState([]);
 
+  const [showAddForm, setShowAddform] = useState(false);
+
   const handleResponse = (r) => {
     if (r.status === 200) {
       r.json().then(setCards);
@@ -30,12 +33,26 @@ export default function YourCards({ session_id }) {
     }).then(handleResponse);
   };
 
-  useEffect(requestCards, []);
+  const showAddCardForm = () => {
+    setShowAddform(true);
+  };
+
+  useEffect(requestCards, [cards]);
 
   return (
-    <div className="flex-col flex-center">
-      <h3>Your Cards:</h3>
-      <CardCollection cards={cards} />
+    <div>
+      <div className="flex-col flex-center">
+        <div className="flex-row" id="card-page-header">
+          <h3 id="your-cards-heading">Your Cards:</h3>
+          <button id="add-card-btn" onClick={showAddCardForm}>
+            Add
+          </button>
+        </div>
+        <CardCollection cards={cards} />
+      </div>
+      {showAddForm && (
+        <AddCard sessionId={session_id} cards={cards} setCards={setCards} />
+      )}
     </div>
   );
 }
