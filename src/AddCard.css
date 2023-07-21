@@ -4,3 +4,10 @@
   box-shadow: 1px 1px 5px;
   padding: 20px;
 }
+
+#add-card-exit-btn {
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  transform: translateX(-70%);
+}

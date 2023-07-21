@@ -34,3 +34,14 @@
 body {
   background-color: whitesmoke;
 }
+
+.exit-button {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  box-shadow: 0 0 2px;
+}
+
+.exit-button:hover {
+  cursor: pointer;
+}

@@ -51,7 +51,7 @@ export default function YourCards({ session_id }) {
         <CardCollection cards={cards} />
       </div>
       {showAddForm && (
-        <AddCard sessionId={session_id} cards={cards} setCards={setCards} />
+        <AddCard sessionId={session_id} setShow={setShowAddform} />
       )}
     </div>
   );
