@@ -5,7 +5,7 @@ function GroupCreationForm({ setGroupId }) {
   const onSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    fetch("http://localhost:8000/group", {
+    fetch(BACKEND_URL + "/group", {
       method: "POST",
       body: formData,
     }).then((r) => {
