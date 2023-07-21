@@ -49,7 +49,7 @@ export default function Home() {
       {groupId !== null && (
         <LinkGive url={`${FRONTEND_URL}/groups/${groupId}`} />
       )}
-      <p style={{ position: "fixed", left: 0 }}>Version: ffe76a8</p>
+      <p style={{ position: "fixed", left: 0, top: 0 }}>Version: 656bb9b</p>
     </div>
   );
 }
