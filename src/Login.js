@@ -9,6 +9,8 @@ export default function Login({ groupId, setSessionId }) {
     setToggleDisabled(false);
     if (r.status === 201) {
       alert(registering ? "Registered" : "Logged In");
+    } else if (r.status === 409) {
+      alert("Username taken");
     } else {
       alert("error");
     }
