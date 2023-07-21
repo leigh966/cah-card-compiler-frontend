@@ -19,6 +19,8 @@ function CardCollection({ cards }) {
 export default function YourCards({ session_id }) {
   const [cards, setCards] = useState([]);
 
+  const [pending, setPending] = useState(0);
+
   const [showAddForm, setShowAddform] = useState(false);
 
   const handleResponse = (r) => {
@@ -37,7 +39,7 @@ export default function YourCards({ session_id }) {
     setShowAddform(true);
   };
 
-  useEffect(requestCards, [cards]);
+  useEffect(requestCards, [pending]);
 
   return (
     <div>
@@ -51,7 +53,12 @@ export default function YourCards({ session_id }) {
         <CardCollection cards={cards} />
       </div>
       {showAddForm && (
-        <AddCard sessionId={session_id} setShow={setShowAddform} />
+        <AddCard
+          sessionId={session_id}
+          setShow={setShowAddform}
+          setPending={setPending}
+          pending={pending}
+        />
       )}
     </div>
   );

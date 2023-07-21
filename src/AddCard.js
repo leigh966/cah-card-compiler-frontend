@@ -2,10 +2,11 @@ import { Form } from "react-router-dom";
 import "./AddCard.css";
 import { BACKEND_URL } from "./WebConfig";
 
-export default function AddCard({ sessionId, setShow }) {
+export default function AddCard({ sessionId, setShow, pending, setPending }) {
   const handleResponse = (r) => {
     if (r.status === 201) {
       alert("card added");
+      setPending(pending + 1);
     }
   };
 
