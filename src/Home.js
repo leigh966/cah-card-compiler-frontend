@@ -47,7 +47,7 @@ export default function Home() {
     <div className="flex-center fills-page">
       {groupId === null && <GroupCreationForm setGroupId={setGroupId} />}
       {groupId !== null && (
-        <LinkGive url={`${FRONTEND_URL}/groups/${groupId}`} />
+        <LinkGive url={`${FRONTEND_URL}/#/groups/${groupId}`} />
       )}
       <p style={{ position: "fixed", left: 0, top: 0 }}>Version: b67de81</p>
     </div>
