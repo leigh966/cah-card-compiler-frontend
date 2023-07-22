@@ -4,8 +4,18 @@ import { BACKEND_URL } from "./WebConfig";
 export default function Login({ groupId, setSessionId }) {
   const [registering, setRegistering] = useState(false);
   const [toggleDisabled, setToggleDisabled] = useState(false);
-
+  const [groupName, setGroupName] = useState("");
   console.log(setSessionId);
+
+  const getGroupName = () => {
+    fetch(BACKEND_URL + "/group/" + groupId).then((r) => {
+      if (r.status === 200) {
+        r.text().then(setGroupName);
+      }
+    });
+  };
+
+  useState(getGroupName, []);
 
   const handleResponse = (r) => {
     setToggleDisabled(false);
@@ -36,7 +46,7 @@ export default function Login({ groupId, setSessionId }) {
   };
   return (
     <div className="fills-page flex-col ">
-      <h1 className="flex-center fill-x">Group Name Here</h1>
+      <h1 className="flex-center fill-x">{groupName}</h1>
       <div className="flex-center fills-page">
         <form
           className="moved-up-by-height flex-col flex-center"
