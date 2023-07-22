@@ -34,7 +34,8 @@ function DownloadReportButton({ sessionId }) {
 
   function saveAsFile(text, filename) {
     // Step 1: Create the blob object with the text you received
-    const type = "application/vnd.ms-excel"; // modify or get it from response
+    const type =
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"; // modify or get it from response
     const blob = new Blob([text], { type });
 
     // Step 2: Create Blob Object URL for that blob
