@@ -1,21 +1,9 @@
 import { useState } from "react";
 import { BACKEND_URL } from "./WebConfig";
 
-export default function Login({ groupId, setSessionId }) {
+export default function Login({ groupId, setSessionId, groupName }) {
   const [registering, setRegistering] = useState(false);
   const [toggleDisabled, setToggleDisabled] = useState(false);
-  const [groupName, setGroupName] = useState("");
-  console.log(setSessionId);
-
-  const getGroupName = () => {
-    fetch(BACKEND_URL + "/group/" + groupId).then((r) => {
-      if (r.status === 200) {
-        r.text().then(setGroupName);
-      }
-    });
-  };
-
-  useState(getGroupName, []);
 
   const handleResponse = (r) => {
     setToggleDisabled(false);
